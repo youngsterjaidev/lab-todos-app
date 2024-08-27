@@ -1,19 +1,24 @@
+import os
 from flask import Flask, request
 from flask_cors import CORS
 import mysql.connector
-from dotenv import dotenv_values
+from dotenv import dotenv_values, load_dotenv
 
-config = dotenv_values(".env")
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
+print(os.environ["HOSTNAME"])
+print(os.environ["USER"])
+print(os.environ["PASS"])
+
 # connecting the sql server
 mydb = mysql.connector.connect(
-  host=config["HOSTNAME"],
-  user=config["USER"],
-  password=config["PASS"],
-  database=config["DB"]
+  host=os.environ["HOSTNAME"],
+  user=os.environ["USER"],
+  password=os.environ["PASS"],
+  database=os.environ["DB"]
 )
 
 # fetch all the todos from the database
