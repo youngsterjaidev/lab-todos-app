@@ -3,6 +3,8 @@ import axios from 'axios'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg';
 
+const server_uri = import.meta.env.VITE_SERVER_URI || "http://192.168.0.253:5000"
+
 function App() {
   const [count, setCount] = useState(0)
   const [todos, setTodos] = useState([])
@@ -10,7 +12,7 @@ function App() {
   const fetchTodos = ()=> {
     // make a get resquest server
     // find the data from response
-    axios.get("https://lab-todos-app-backend-ggfwhbfjerbahjex.eastus-01.azurewebsites.net/")
+    axios.get(`${server_uri}`)
       .then(res => {
         console.log(res.data)
         setTodos(res.data)
@@ -22,7 +24,7 @@ function App() {
     e.preventDefault()
 
     // send the post request to the server
-    axios.post("https://lab-todos-app-backend-ggfwhbfjerbahjex.eastus-01.azurewebsites.net/add", {
+    axios.post(`${server_uri}/add`, {
       title: "football",
       isCompleted: false,
       timestamp: "2024-08-26 13:35:04"
