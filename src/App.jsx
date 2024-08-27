@@ -10,7 +10,7 @@ function App() {
   const fetchTodos = ()=> {
     // make a get resquest server
     // find the data from response
-    axios.get("http://192.168.0.253:5000/")
+    axios.get("https://lab-todos-app-backend-ggfwhbfjerbahjex.eastus-01.azurewebsites.net/")
       .then(res => {
         console.log(res.data)
         setTodos(res.data)
@@ -22,7 +22,7 @@ function App() {
     e.preventDefault()
 
     // send the post request to the server
-    axios.post("http://192.168.0.253:5000/add", {
+    axios.post("https://lab-todos-app-backend-ggfwhbfjerbahjex.eastus-01.azurewebsites.net/add", {
       title: "football",
       isCompleted: false,
       timestamp: "2024-08-26 13:35:04"
